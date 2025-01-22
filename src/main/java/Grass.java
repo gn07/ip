@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 public class Grass {
     public static void main(String[] args) {
         String logo = "  ___  ____   __   ____  ____ \n"
@@ -16,9 +17,18 @@ public class Grass {
         System.out.println("What can I do for you?");
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
+        ArrayList<String> inputList = new ArrayList<String>();
         while (!input.equals("bye")) {
             System.out.println("____________________________________________________________");
-            System.out.println(input);
+            if (input.equals("list")) {
+                for(int i = 0; i < inputList.size(); i++) {
+                    System.out.println(i + 1 + ". " + inputList.get(i));
+                }
+            }
+            else {
+                inputList.add(input);
+                System.out.println("added: " + input);
+            }
             System.out.println("____________________________________________________________");
             input = sc.nextLine();
         }
