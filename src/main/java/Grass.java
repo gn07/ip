@@ -25,8 +25,19 @@ public class Grass {
             System.out.println("____________________________________________________________");
             System.out.println(input);
             if (input.equals("list")) {
-                for(int i = 0; i < inputList.size(); i++) {
-                    System.out.println(i + 1 + ". " + inputList.get(i));
+                try {
+                    if (inputList.size() == 0) {
+                        throw new GrassException("Task list is empty.");
+                    }
+                    for(Task t : inputList) {
+                        System.out.println((inputList.indexOf(t) + 1) + ". " + t);
+                    }
+                    }
+                catch (GrassException e) {
+                    System.out.println(e.getMessage());
+                    System.out.println("____________________________________________________________");
+                    input = sc.nextLine();
+                    continue;
                 }
             }
             else if (input.startsWith("mark")) {
