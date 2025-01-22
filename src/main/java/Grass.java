@@ -34,6 +34,27 @@ public class Grass {
                 System.out.println("OK, I've marked this task as not done yet:");
                 System.out.println(inputList.get(taskNumber - 1));
             }
+            else if (input.startsWith("todo")) {
+                inputList.add(new Todo(input.substring(5)));
+                System.out.println("Got it. I've added this task:");
+                System.out.println(inputList.get(inputList.size() - 1));
+                System.out.println("Now you have " + inputList.size() + " tasks in the list.");
+            }
+            else if (input.startsWith("deadline")) {
+                String[] inputArray = input.substring(9).split(" /by ");
+                inputList.add(new Deadline(inputArray[0], inputArray[1]));
+                System.out.println("Got it. I've added this task:");
+                System.out.println(inputList.get(inputList.size() - 1));
+                System.out.println("Now you have " + inputList.size() + " tasks in the list.");
+            }
+            else if (input.startsWith("event")) {
+                String[] inputArray = input.substring(6).split(" /from ");
+                String[] leftovers = inputArray[1].split(" /to ");
+                inputList.add(new Event(inputArray[0], leftovers[0], leftovers[1]));
+                System.out.println("Got it. I've added this task:");
+                System.out.println(inputList.get(inputList.size() - 1));
+                System.out.println("Now you have " + inputList.size() + " tasks in the list.");
+            }
             else {
                 inputList.add(new Task(input));
                 System.out.println("added: " + input);
