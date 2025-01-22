@@ -37,7 +37,7 @@ public class Grass {
                     int taskNumber = Integer.parseInt(input.substring(5));
 
                     try{
-                        if (taskNumber > inputList.size()) {
+                        if (taskNumber == 0 || taskNumber > inputList.size()) {
                             throw new GrassException("Task number out of range.");
                         }
                         inputList.get(taskNumber - 1).markAsDone();
@@ -67,7 +67,7 @@ public class Grass {
                     }
                     int taskNumber = Integer.parseInt(input.substring(7));
                     try {
-                        if (taskNumber > inputList.size()) {
+                        if (taskNumber == 0 || taskNumber > inputList.size()) {
                             throw new GrassException("Task number out of range.");
                         }
                         inputList.get(taskNumber - 1).markAsUndone();
@@ -81,6 +81,39 @@ public class Grass {
                     
                     System.out.println("OK, I've marked this task as not done yet:");
                     System.out.println(inputList.get(taskNumber - 1));
+                }
+                catch (GrassException e) {
+                    System.out.println(e.getMessage());
+                    System.out.println("____________________________________________________________");
+                    input = sc.nextLine();
+                    continue;
+                }
+
+                
+            }
+
+            else if (input.startsWith("delete")) {
+                try {
+                    if (input.length() < 7) {
+                        throw new GrassException("Please specify the task number to delete.");
+                    }
+                    int taskNumber = Integer.parseInt(input.substring(7));
+                    try{
+                        if (taskNumber == 0 || taskNumber > inputList.size()) {
+                            throw new GrassException("Task number out of range.");
+                        }
+                        Task removed = inputList.get(taskNumber - 1);
+                        inputList.remove(taskNumber - 1);
+                        System.out.println("Noted. I've removed this task:");
+                        System.out.println(removed);
+                        System.out.println("Now you have " + inputList.size() + " tasks in the list.");
+                    }
+                    catch (GrassException e) {
+                        System.out.println(e.getMessage());
+                        System.out.println("____________________________________________________________");
+                        input = sc.nextLine();
+                        continue;
+                    }
                 }
                 catch (GrassException e) {
                     System.out.println(e.getMessage());
