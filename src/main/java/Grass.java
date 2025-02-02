@@ -1,6 +1,11 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.lang.Integer;
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.FileNotFoundException;
 
 class GrassException extends Exception {
     public GrassException(String m) {
@@ -9,6 +14,70 @@ class GrassException extends Exception {
 }
 
 public class Grass {
+
+    public static void loadFromTxt(ArrayList<Task> inputList) {
+        try {
+            File f = new File("./data/grass.txt");
+            Scanner s = new Scanner(f);
+            while (s.hasNextLine()) {
+                String line = s.nextLine();
+                String[] lineArray = line.split(" \\| ");
+                System.out.println("how");
+                System.out.println(lineArray.length);
+                System.out.println(lineArray[0]);
+                System.out.println(lineArray[1]);
+                System.out.println(lineArray[2]);
+                System.out.println("why");
+                if (lineArray[0].equals("T")) {
+                    inputList.add(new Todo(lineArray[2]));
+                    if (lineArray[1].equals("1")) {
+                        inputList.get(inputList.size() - 1).markAsDone();
+                    }
+                }
+                else if (lineArray[0].equals("D")) {
+                    inputList.add(new Deadline(lineArray[2], lineArray[3]));
+                    if (lineArray[1].equals("1")) {
+                        inputList.get(inputList.size() - 1).markAsDone();
+                    }
+                }
+                else if (lineArray[0].equals("E")) {
+                    inputList.add(new Event(lineArray[2], lineArray[3], lineArray[4]));
+                    if (lineArray[1].equals("1")) {
+                        inputList.get(inputList.size() - 1).markAsDone();
+                    }
+                }
+            }
+        }
+        catch (FileNotFoundException e) {
+            System.out.println("File not found.");
+        }
+        return;
+    }
+
+    public static void writeToTxt(ArrayList<Task> inputList) {
+        try {
+            File f = new File("./data/grass.txt");
+            FileWriter fw = new FileWriter(f);
+            for (Task t : inputList) {
+                if (t instanceof Todo) {
+                    fw.write("T | " + (t.isDone ? "1" : "0") + " | " + t.description + "\n");
+                }
+                else if (t instanceof Deadline) {
+                    fw.write("D | " + (t.isDone ? "1" : "0") + " | " + t.description + " | " + ((Deadline) t).by + "\n");
+                }
+                else if (t instanceof Event) {
+                    fw.write("E | " + (t.isDone ? "1" : "0") + " | " + t.description + " | " + ((Event) t).from + " | " + ((Event) t).to + "\n");
+                }
+            }
+            fw.close();
+        }
+        catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+        return;
+    }
+
     public static void main(String[] args) {
         String logo = "  ___  ____   __   ____  ____ \n"
                     + " / __)(  _ \\ / _\\ / ___)/ ___) \n"
@@ -21,12 +90,13 @@ public class Grass {
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
         ArrayList<Task> inputList = new ArrayList<Task>();
+        loadFromTxt(inputList);
         while (!input.equals("bye")) {
             System.out.println("____________________________________________________________");
             System.out.println(input);
             if (input.equals("list")) {
                 try {
-                    if (inputList.size() == 0) {
+                    if (inputList.isEmpty()) {
                         throw new GrassException("Task list is empty.");
                     }
                     for(Task t : inputList) {
@@ -235,6 +305,7 @@ public class Grass {
             }
             System.out.println("____________________________________________________________");
             input = sc.nextLine();
+            writeToTxt(inputList);
         }
         System.out.println("____________________________________________________________");
         System.out.println("Bye. Hope to see you again soon!");
