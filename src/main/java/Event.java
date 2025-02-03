@@ -3,8 +3,8 @@ public class Event extends Task {
     protected String to;
     public Event(String description, String from, String to) {
         super(description);
-        this.from = from;
-        this.to = to;
+        this.from = formatDateTime(from);
+        this.to = formatDateTime(to);
     }
 
     @Override

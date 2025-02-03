@@ -22,12 +22,6 @@ public class Grass {
             while (s.hasNextLine()) {
                 String line = s.nextLine();
                 String[] lineArray = line.split(" \\| ");
-                System.out.println("how");
-                System.out.println(lineArray.length);
-                System.out.println(lineArray[0]);
-                System.out.println(lineArray[1]);
-                System.out.println(lineArray[2]);
-                System.out.println("why");
                 if (lineArray[0].equals("T")) {
                     inputList.add(new Todo(lineArray[2]));
                     if (lineArray[1].equals("1")) {
