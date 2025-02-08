@@ -1,3 +1,4 @@
+package grass;
 // handles input and output of the program
 import java.util.Scanner;
 

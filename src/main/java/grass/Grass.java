@@ -1,4 +1,4 @@
-// runs main application
+package grass;// runs main application
 
 public class Grass {
     private Storage storage;
