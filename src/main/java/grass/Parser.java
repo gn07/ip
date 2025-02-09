@@ -166,5 +166,22 @@ public class Parser {
         return "Got it. I've added this task:\n" + task + "\nNow you have " + tasks.getSize() + " tasks in the list.";
     }
 
+    public String findTask(String command) {
+        String keyword = command.substring(5);
+        String list = "";
+        int count = 0;
+        for (int i = 0; i < tasks.getSize(); i++) {
+            Task task = tasks.getTask(i);
+            if (task.getDescription().contains(keyword)) {
+                list += (i + 1) + ". " + task.toString() + "\n";
+                count++;
+            }
+        }
+        if (count == 0) {
+            return "No matching tasks found.";
+        }
+        return "Here are the matching tasks in your list:\n" + list;
+    }
+
 
 }

@@ -45,6 +45,9 @@ public class Grass {
             else if (input.startsWith("event")) {
                 ui.eventTask(input);
             }
+            else if (input.startsWith("find")) {
+                ui.findTask(input);
+            }
             else {
                ui.invalidCommand();
             }

@@ -207,6 +207,17 @@ public class Ui {
     }
 
     /** 
+     * <p>print outputs for 'find' command</p>
+     * @param input string user input
+     * @since 1.0
+     */
+    public void findTask(String input) {
+        String message = parser.findTask(input);
+        System.out.println(LINE);
+        System.out.println(message);
+    }
+    
+    /** 
      * <p>print invalid command message</p>
      * @since 1.0
      */
