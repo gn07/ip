@@ -130,6 +130,12 @@ public class Ui {
         }
     }
 
+    public void findTask(String input) {
+        String message = parser.findTask(input);
+        System.out.println(LINE);
+        System.out.println(message);
+    }
+
     public void invalidCommand() {
         System.out.println(LINE);
         System.out.println(INVALID);
