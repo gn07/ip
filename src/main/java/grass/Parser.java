@@ -166,6 +166,12 @@ public class Parser {
         return "Got it. I've added this task:\n" + task + "\nNow you have " + tasks.getSize() + " tasks in the list.";
     }
 
+    /**
+     * <p>parse find command</p>
+     * @param command input given by user
+     * @return string confirmation on operation success
+     * @since 1.0
+     */
     public String findTask(String command) {
         String keyword = command.substring(5);
         String list = "";
