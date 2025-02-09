@@ -1,5 +1,4 @@
 package grass;
-// handles storing tasks in text file
 
 import java.io.File;
 import java.io.FileWriter;
@@ -8,6 +7,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+* handles storing tasks in text file
+* 
+* @author gn07
+* 
+*/
 public class Storage {
     protected String filePath;
 
@@ -15,6 +20,11 @@ public class Storage {
         this.filePath = filePath;
     }
 
+    /**
+     * <p>loads tasks from saved text file</p>
+     * @return tasks in the text file as ArrayList<Task>
+     * @since 1.0
+     */
     public ArrayList<Task> loadFromTxt() throws GrassException {
         ArrayList<Task> inputList = new ArrayList<Task>();
 
@@ -53,6 +63,11 @@ public class Storage {
     
     }
 
+    /**
+     * <p>writes tasks to designated save text file</p>
+     * @param inputList task list to be saved
+     * @since 1.0
+     */
     public void writeToTxt(ArrayList<Task> inputList) throws GrassException{
         try {
             File f = new File(this.filePath);

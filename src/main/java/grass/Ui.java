@@ -1,7 +1,13 @@
 package grass;
-// handles input and output of the program
+
 import java.util.Scanner;
 
+/**
+* handles input and output of the program
+* 
+* @author gn07
+* 
+*/
 public class Ui {
     protected static final String LINE = "____________________________________________________________";
     protected static final String LOGO = "  ___  ____   __   ____  ____ \n"
@@ -19,24 +25,47 @@ public class Ui {
         this.parser = new Parser(tasks);
     }
 
+    /**
+     * <p>reads new user input</p>
+     * @return string containing user input
+     * @since 1.0
+     */
     public String readCommand() {
         this.command = sc.nextLine();
         return command;
     }
 
+    /**
+     * <p>prints command recieved and a sperator</p>
+     * @param command string containing user input
+     * @since 1.0
+     */
     public void commandSeparator(String command) {
         System.out.println(LINE);
         System.out.println(command);
     }
 
+    /**
+     * <p>get user input</p>
+     * @return string containing user input
+     * @since 1.0
+     */
     public String getCommand() {
         return this.command;
     }
 
+    /**
+     * <p>prints seperation line</p>
+     * @since 1.0
+     */
     public void printLine() {
         System.out.println(LINE);
     }
 
+    /** 
+     * <p>print application startup message</p>
+     * @since 1.0
+     */
     public void startup() {
         System.out.println(LINE);
         System.out.println("Hello! I'm");
@@ -45,21 +74,38 @@ public class Ui {
         System.out.println(LINE);
     }
 
+    /** 
+     * <p>print application shutdown message</p>
+     * @since 1.0
+     */
     public void shutdown() {
         System.out.println(LINE);
         System.out.println("Bye. Hope to see you again soon!");
         System.out.println(LINE);
     }
 
+    /** 
+     * <p>print error message</p>
+     * @param message error message to print
+     * @since 1.0
+     */
     public void errorMessage(String message) {
         System.out.println(LINE);
         System.out.println(message);
     }
 
+    /** 
+     * <p>close scanner</p>
+     * @since 1.0
+     */
     public void closeScanner() {
         sc.close();
     }
 
+    /** 
+     * <p>print outputs for 'list' command</p>
+     * @since 1.0
+     */
     public void printList() {
         try {
             String message = parser.parseList();
@@ -70,6 +116,11 @@ public class Ui {
         }
     }
 
+    /** 
+     * <p>print outputs for 'mark' command</p>
+     * @param input string user input
+     * @since 1.0
+     */
     public void markTask(String input) {
         try {
             String message = parser.parseMark(input);
@@ -80,6 +131,11 @@ public class Ui {
         }
     }
 
+    /** 
+     * <p>print outputs for 'unmark' command</p>
+     * @param input string user input
+     * @since 1.0
+     */
     public void unmarkTask(String input) {
         try {
             String message = parser.parseUnmark(input);
@@ -89,7 +145,12 @@ public class Ui {
             errorMessage(e.getMessage());
         }
     }
-
+    
+    /** 
+     * <p>print outputs for 'delete' command</p>
+     * @param input string user input
+     * @since 1.0
+     */
     public void deleteTask(String input) {
         try {
             String message = parser.parseDelete(input);
@@ -100,6 +161,11 @@ public class Ui {
         }
     }
 
+    /** 
+     * <p>print outputs for 'todo' command</p>
+     * @param input string user input
+     * @since 1.0
+     */
     public void todoTask(String input) {
         try {
             String message = parser.todoTask(input);
@@ -110,6 +176,11 @@ public class Ui {
         }
     }
 
+    /** 
+     * <p>print outputs for 'deadline' command</p>
+     * @param input string user input
+     * @since 1.0
+     */
     public void deadlineTask(String input) {
         try {
             String message = parser.deadlineTask(input);
@@ -120,6 +191,11 @@ public class Ui {
         }
     }
 
+    /** 
+     * <p>print outputs for 'event' command</p>
+     * @param input string user input
+     * @since 1.0
+     */
     public void eventTask(String input) {
         try {
             String message = parser.eventTask(input);
@@ -130,6 +206,10 @@ public class Ui {
         }
     }
 
+    /** 
+     * <p>print invalid command message</p>
+     * @since 1.0
+     */
     public void invalidCommand() {
         System.out.println(LINE);
         System.out.println(INVALID);
