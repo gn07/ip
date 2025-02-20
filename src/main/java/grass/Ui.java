@@ -40,9 +40,8 @@ public class Ui {
      * @param command string containing user input
      * @since 1.0
      */
-    public void commandSeparator(String command) {
-        System.out.println(LINE);
-        System.out.println(command);
+    public String commandSeparator(String command) {
+        return LINE + command;
     }
 
     /**
@@ -58,30 +57,24 @@ public class Ui {
      * <p>prints seperation line</p>
      * @since 1.0
      */
-    public void printLine() {
-        System.out.println(LINE);
+    public String printLine() {
+        return LINE;
     }
 
     /** 
      * <p>print application startup message</p>
      * @since 1.0
      */
-    public void startup() {
-        System.out.println(LINE);
-        System.out.println("Hello! I'm");
-        System.out.println(LOGO);
-        System.out.println("What can I do for you?");
-        System.out.println(LINE);
+    public String startup() {
+        return "Hello! I'm" + LOGO + "What can I do for you?" ;
     }
 
     /** 
      * <p>print application shutdown message</p>
      * @since 1.0
      */
-    public void shutdown() {
-        System.out.println(LINE);
-        System.out.println("Bye. Hope to see you again soon!");
-        System.out.println(LINE);
+    public String shutdown() {
+        return "Bye. Hope to see you again soon!" ;
     }
 
     /** 
@@ -89,9 +82,8 @@ public class Ui {
      * @param message error message to print
      * @since 1.0
      */
-    public void errorMessage(String message) {
-        System.out.println(LINE);
-        System.out.println(message);
+    public String errorMessage(String message) {
+        return message;
     }
 
     /** 
@@ -106,13 +98,12 @@ public class Ui {
      * <p>print outputs for 'list' command</p>
      * @since 1.0
      */
-    public void printList() {
+    public String printList() {
         try {
-            String message = parser.parseList();
-            System.out.println(LINE);
-            System.out.println(message);
+//            String message = parser.parseList();
+            return parser.parseList();
         }catch (GrassException e) {
-            errorMessage(e.getMessage());
+            return errorMessage(e.getMessage());
         }
     }
 
@@ -121,13 +112,12 @@ public class Ui {
      * @param input string user input
      * @since 1.0
      */
-    public void markTask(String input) {
+    public String markTask(String input) {
         try {
-            String message = parser.parseMark(input);
-            System.out.println(LINE);
-            System.out.println(message);
+//            String message = parser.parseMark(input);
+            return parser.parseMark(input);
         } catch (GrassException e) {
-            errorMessage(e.getMessage());
+            return errorMessage(e.getMessage());
         }
     }
 
@@ -136,13 +126,12 @@ public class Ui {
      * @param input string user input
      * @since 1.0
      */
-    public void unmarkTask(String input) {
+    public String unmarkTask(String input) {
         try {
-            String message = parser.parseUnmark(input);
-            System.out.println(LINE);
-            System.out.println(message);
+//            String message = parser.parseUnmark(input);
+            return parser.parseUnmark(input);
         } catch (GrassException e) {
-            errorMessage(e.getMessage());
+            return errorMessage(e.getMessage());
         }
     }
     
@@ -151,13 +140,12 @@ public class Ui {
      * @param input string user input
      * @since 1.0
      */
-    public void deleteTask(String input) {
+    public String deleteTask(String input) {
         try {
-            String message = parser.parseDelete(input);
-            System.out.println(LINE);
-            System.out.println(message);
+//            String message = parser.parseDelete(input);
+            return parser.parseDelete(input);
         } catch (GrassException e) {
-            errorMessage(e.getMessage());
+            return errorMessage(e.getMessage());
         }
     }
 
@@ -166,13 +154,12 @@ public class Ui {
      * @param input string user input
      * @since 1.0
      */
-    public void todoTask(String input) {
+    public String todoTask(String input) {
         try {
-            String message = parser.todoTask(input);
-            System.out.println(LINE);
-            System.out.println(message);
+//            String message = parser.todoTask(input);
+            return parser.todoTask(input);
         } catch (GrassException e) {
-            errorMessage(e.getMessage());
+            return errorMessage(e.getMessage());
         }
     }
 
@@ -181,13 +168,12 @@ public class Ui {
      * @param input string user input
      * @since 1.0
      */
-    public void deadlineTask(String input) {
+    public String deadlineTask(String input) {
         try {
-            String message = parser.deadlineTask(input);
-            System.out.println(LINE);
-            System.out.println(message);
+//            String message = parser.deadlineTask(input);
+            return parser.deadlineTask(input);
         } catch (GrassException e) {
-            errorMessage(e.getMessage());
+            return errorMessage(e.getMessage());
         }
     }
 
@@ -196,13 +182,12 @@ public class Ui {
      * @param input string user input
      * @since 1.0
      */
-    public void eventTask(String input) {
+    public String eventTask(String input) {
         try {
-            String message = parser.eventTask(input);
-            System.out.println(LINE);
-            System.out.println(message);
+//            String message = parser.eventTask(input);
+            return parser.eventTask(input);
         } catch (GrassException e) {
-            errorMessage(e.getMessage());
+            return errorMessage(e.getMessage());
         }
     }
 
@@ -211,19 +196,17 @@ public class Ui {
      * @param input string user input
      * @since 1.0
      */
-    public void findTask(String input) {
-        String message = parser.findTask(input);
-        System.out.println(LINE);
-        System.out.println(message);
+    public String findTask(String input) {
+//        String message = parser.findTask(input);
+        return parser.findTask(input);
     }
     
     /** 
      * <p>print invalid command message</p>
      * @since 1.0
      */
-    public void invalidCommand() {
-        System.out.println(LINE);
-        System.out.println(INVALID);
+    public String invalidCommand() {
+        return INVALID;
     }
 
 

@@ -6,7 +6,6 @@ public class Grass {
     private Ui ui;
 
     public Grass(String filePath) {
-        
         storage = new Storage(filePath);
         try {
             tasks = new TaskList(storage.loadFromTxt());
@@ -16,53 +15,52 @@ public class Grass {
         }
         
         ui = new Ui(tasks);
-    }
-
-    public void run() {
         ui.startup();
-        String input = ui.readCommand();
-        while (!input.equals("bye")) {
-            ui.commandSeparator(input);
-            if (input.equals("list")) {
-                ui.printList();
-            }
-            else if (input.startsWith("mark")) {
-                ui.markTask(input);
-            }
-            else if (input.startsWith("unmark")) {
-                ui.unmarkTask(input);
-            }
+    }
 
-            else if (input.startsWith("delete")) {
-                ui.deleteTask(input);
-            }
-            else if (input.startsWith("todo")) {
-                ui.todoTask(input);
-            }
-            else if (input.startsWith("deadline")) {
-                ui.deadlineTask(input);
-            }
-            else if (input.startsWith("event")) {
-                ui.eventTask(input);
-            }
-            else if (input.startsWith("find")) {
-                ui.findTask(input);
-            }
-            else {
-               ui.invalidCommand();
-            }
-            ui.printLine();
-            input = ui.readCommand();
-            try {
-                storage.writeToTxt(tasks.getTasks());
-            } catch (GrassException e) {
-                ui.errorMessage(e.getMessage());
-            }
+    public String getResponse(String input) {
+        String output = "";
+//        ui.commandSeparator(input);
+        if (input.equals("list")) {
+            output += ui.printList();
         }
-        ui.shutdown();
+        else if (input.startsWith("mark")) {
+            output += ui.markTask(input);
+        }
+        else if (input.startsWith("unmark")) {
+            output += ui.unmarkTask(input);
+        }
+        else if (input.startsWith("delete")) {
+            output += ui.deleteTask(input);
+        }
+        else if (input.startsWith("todo")) {
+            output += ui.todoTask(input);
+        }
+        else if (input.startsWith("deadline")) {
+            output += ui.deadlineTask(input);
+        }
+        else if (input.startsWith("event")) {
+            output += ui.eventTask(input);
+        }
+        else if (input.startsWith("find")) {
+            output += ui.findTask(input);
+        }
+        else if (input.equals("bye")) {
+            return ui.shutdown();
+        }
+        else {
+            output += ui.invalidCommand();
+        }
+//        output += ui.printLine();
+        try {
+            storage.writeToTxt(tasks.getTasks());
+        } catch (GrassException e) {
+            ui.errorMessage(e.getMessage());
+        }
+        return output;
     }
 
-    public static void main(String[] args) {
-        new Grass("./data/grass.txt").run();
-    }
+//    public static void main(String[] args) {
+//        new Grass("./data/grass.txt").run();
+//    }
 }
