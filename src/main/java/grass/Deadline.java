@@ -14,4 +14,13 @@ public class Deadline extends Task {
     public String toString() {
         return "[D]" + super.toString() + " (by: " + by + ")";
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Deadline) {
+            Deadline other = (Deadline) obj;
+            return this.description.equals(other.description) && this.by.equals(other.by);
+        }
+        return false;
+    }
 }

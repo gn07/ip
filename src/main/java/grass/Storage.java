@@ -75,7 +75,6 @@ public class Storage {
      */
     public void writeToTxt(ArrayList<Task> inputList) throws GrassException{
         try {
-            assert this,filePath.exists() : "File could not open.";
             File f = new File(this.filePath);
             FileWriter fw = new FileWriter(f);
             for (Task t : inputList) {

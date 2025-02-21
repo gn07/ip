@@ -84,4 +84,13 @@ public class TaskList {
         return tasks.isEmpty();
     }
 
+    public boolean inList(Task task) {
+        for (int i = 0; i < tasks.size(); i++) {
+            if (tasks.get(i).equals(task)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

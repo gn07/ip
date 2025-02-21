@@ -6,3 +6,6 @@ D | 1 | finish homework | 7pm
 T | 0 | sleep
 D | 0 | sleep | 10pm
 E | 1 | sleep | now | 9am
+T | 0 | sleepsss
+D | 0 | sleep | 5pm
+E | 0 | sleep | now | now

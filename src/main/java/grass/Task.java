@@ -61,4 +61,13 @@ public class Task {
         return "[" + this.getStatusIcon() + "] " + this.description;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Task) {
+            Task t = (Task) obj;
+            return this.description.equals(t.description);
+        }
+        return false;
+    }
+
 }

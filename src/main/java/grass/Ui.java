@@ -41,8 +41,9 @@ public class Ui {
      * @param command string containing user input
      * @since 1.0
      */
-    public String commandSeparator(String command) {
-        return System.out.println(LINE + command);
+    public void commandSeparator(String command) {
+        System.out.println(LINE + command);
+        return;
     }
 
     /**
@@ -58,8 +59,9 @@ public class Ui {
      * <p>prints seperation line</p>
      * @since 1.0
      */
-    public String printLine() {
-        return System.out.println(LINE);
+    public void printLine() {
+        System.out.println(LINE);
+        return;
     }
 
     /** 

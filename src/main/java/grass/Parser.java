@@ -118,6 +118,9 @@ public class Parser {
         }
         String description = command.substring(5);
         Task task = new Todo(description);
+        if (tasks.inList(task)) {
+            throw new GrassException("Task already exists in the list.");
+        }
         tasks.addTask(task);
         return "Got it. I've added this task:\n" + task + "\nNow you have " + tasks.getSize() + " tasks in the list.";
     }
@@ -140,6 +143,9 @@ public class Parser {
         assert split[0].length() > 0 : "Description cannot be empty.";
         assert split[1].length() > 0 : "Deadline cannot be empty.";
         Task task = new Deadline(split[0], split[1]);
+        if (tasks.inList(task)) {
+            throw new GrassException("Task already exists in the list.");
+        }
         tasks.addTask(task);
         return "Got it. I've added this task:\n" + task + "\nNow you have " + tasks.getSize() + " tasks in the list.";
     }
@@ -167,6 +173,9 @@ public class Parser {
         assert leftovers[0].length() > 0 : "Start time cannot be empty.";
         assert leftovers[1].length() > 0 : "End time cannot be empty.";
         Task task = new Event(split[0], leftovers[0], leftovers[1]);
+        if (tasks.inList(task)) {
+            throw new GrassException("Task already exists in the list.");
+        }
         tasks.addTask(task);
         return "Got it. I've added this task:\n" + task + "\nNow you have " + tasks.getSize() + " tasks in the list.";
     }
