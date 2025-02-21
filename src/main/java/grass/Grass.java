@@ -10,7 +10,7 @@ public class Grass {
         try {
             tasks = new TaskList(storage.loadFromTxt());
         } catch (GrassException e) {
-            ui.errorMessage(e.getMessage());
+            System.out.println(e.getMessage());
             tasks = new TaskList();
         }
         
