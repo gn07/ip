@@ -15,6 +15,7 @@ public class Ui {
                     + "( (_ \\ )   //    \\\\___ \\\\___ \\ \n"
                     + " \\___/(__\\_)\\_/\\_/(____/(____/ \n";
     protected static final String INVALID = "What do you want...?";
+
     protected Scanner sc;
     protected String command;
     protected Parser parser;
@@ -41,7 +42,7 @@ public class Ui {
      * @since 1.0
      */
     public String commandSeparator(String command) {
-        return LINE + command;
+        return System.out.println(LINE + command);
     }
 
     /**
@@ -58,11 +59,12 @@ public class Ui {
      * @since 1.0
      */
     public String printLine() {
-        return LINE;
+        return System.out.println(LINE);
     }
 
     /** 
-     * <p>print application startup message</p>
+     * <p>returns application startup message</p>
+     * @return string containing startup message
      * @since 1.0
      */
     public String startup() {
@@ -70,7 +72,8 @@ public class Ui {
     }
 
     /** 
-     * <p>print application shutdown message</p>
+     * <p>returns application shutdown message</p>
+     * @return string containing goodbye message
      * @since 1.0
      */
     public String shutdown() {
@@ -78,8 +81,9 @@ public class Ui {
     }
 
     /** 
-     * <p>print error message</p>
+     * <p>returns error message</p>
      * @param message error message to print
+     * @return string containing error message
      * @since 1.0
      */
     public String errorMessage(String message) {
@@ -95,12 +99,12 @@ public class Ui {
     }
 
     /** 
-     * <p>print outputs for 'list' command</p>
+     * <p>returns outputs for 'list' command</p>
+     * @return string containing list of tasks
      * @since 1.0
      */
     public String printList() {
         try {
-//            String message = parser.parseList();
             return parser.parseList();
         }catch (GrassException e) {
             return errorMessage(e.getMessage());
@@ -108,13 +112,13 @@ public class Ui {
     }
 
     /** 
-     * <p>print outputs for 'mark' command</p>
+     * <p>returns outputs for 'mark' command</p>
      * @param input string user input
+     * @return string containing confirmation message
      * @since 1.0
      */
     public String markTask(String input) {
         try {
-//            String message = parser.parseMark(input);
             return parser.parseMark(input);
         } catch (GrassException e) {
             return errorMessage(e.getMessage());
@@ -122,13 +126,13 @@ public class Ui {
     }
 
     /** 
-     * <p>print outputs for 'unmark' command</p>
+     * <p>returns outputs for 'unmark' command</p>
      * @param input string user input
+     * @return string containing confirmation message
      * @since 1.0
      */
     public String unmarkTask(String input) {
         try {
-//            String message = parser.parseUnmark(input);
             return parser.parseUnmark(input);
         } catch (GrassException e) {
             return errorMessage(e.getMessage());
@@ -136,13 +140,13 @@ public class Ui {
     }
     
     /** 
-     * <p>print outputs for 'delete' command</p>
+     * <p>returns outputs for 'delete' command</p>
      * @param input string user input
+     * @return string containing confirmation message
      * @since 1.0
      */
     public String deleteTask(String input) {
         try {
-//            String message = parser.parseDelete(input);
             return parser.parseDelete(input);
         } catch (GrassException e) {
             return errorMessage(e.getMessage());
@@ -150,13 +154,13 @@ public class Ui {
     }
 
     /** 
-     * <p>print outputs for 'todo' command</p>
+     * <p>returns outputs for 'todo' command</p>
      * @param input string user input
+     * @return string containing confirmation message
      * @since 1.0
      */
     public String todoTask(String input) {
         try {
-//            String message = parser.todoTask(input);
             return parser.todoTask(input);
         } catch (GrassException e) {
             return errorMessage(e.getMessage());
@@ -164,13 +168,13 @@ public class Ui {
     }
 
     /** 
-     * <p>print outputs for 'deadline' command</p>
+     * <p>returns outputs for 'deadline' command</p>
      * @param input string user input
+     * @return string containing confirmation message
      * @since 1.0
      */
     public String deadlineTask(String input) {
         try {
-//            String message = parser.deadlineTask(input);
             return parser.deadlineTask(input);
         } catch (GrassException e) {
             return errorMessage(e.getMessage());
@@ -178,13 +182,13 @@ public class Ui {
     }
 
     /** 
-     * <p>print outputs for 'event' command</p>
+     * <p>returns outputs for 'event' command</p>
      * @param input string user input
+     * @return string containing confirmation message
      * @since 1.0
      */
     public String eventTask(String input) {
         try {
-//            String message = parser.eventTask(input);
             return parser.eventTask(input);
         } catch (GrassException e) {
             return errorMessage(e.getMessage());
@@ -192,17 +196,18 @@ public class Ui {
     }
 
     /** 
-     * <p>print outputs for 'find' command</p>
+     * <p>returns outputs for 'find' command</p>
      * @param input string user input
+     * @return string containing list of tasks found
      * @since 1.0
      */
     public String findTask(String input) {
-//        String message = parser.findTask(input);
         return parser.findTask(input);
     }
     
     /** 
-     * <p>print invalid command message</p>
+     * <p>returns invalid command message</p>
+     * @return string containing invalid command message
      * @since 1.0
      */
     public String invalidCommand() {
