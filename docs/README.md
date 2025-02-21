@@ -1,6 +1,6 @@
 # Grass User Guide
 
-![Grass sample](/docs/Ui.png)
+![Grass sample](./Ui.png)
 
 Grass has the following uses:
 - developers get to *touch grass* without leaving their keyboards by developing on this project
