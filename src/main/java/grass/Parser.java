@@ -137,6 +137,8 @@ public class Parser {
             throw new GrassException("Please specify by when the deadline ends (add /by behind the description).");
         }
         String[] split = description.split(" /by ");
+        assert split[0].length() > 0 : "Description cannot be empty.";
+        assert split[1].length() > 0 : "Deadline cannot be empty.";
         Task task = new Deadline(split[0], split[1]);
         tasks.addTask(task);
         return "Got it. I've added this task:\n" + task + "\nNow you have " + tasks.getSize() + " tasks in the list.";
@@ -161,6 +163,9 @@ public class Parser {
             throw new GrassException("Please specify the end time of an event (add /to behind the start time).");
         }
         String[] leftovers = split[1].split(" /to ");
+        assert split[0].length() > 0 : "Description cannot be empty.";
+        assert leftovers[0].length() > 0 : "Start time cannot be empty.";
+        assert leftovers[1].length() > 0 : "End time cannot be empty.";
         Task task = new Event(split[0], leftovers[0], leftovers[1]);
         tasks.addTask(task);
         return "Got it. I've added this task:\n" + task + "\nNow you have " + tasks.getSize() + " tasks in the list.";
