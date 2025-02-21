@@ -58,7 +58,7 @@ Example: `list`
 
 You can delete a task from Grass by using the delete command.
 
-Example: `event sleep /from now /to 7pm`
+Example: `delete 1`
 
 ```
 Noted. I've removed this task:
