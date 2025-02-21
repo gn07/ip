@@ -88,7 +88,6 @@ public class Storage {
         }
         catch (IOException e) {
             throw new GrassException("An error occurred.");
-            // e.printStackTrace();
         }
         return;
     }

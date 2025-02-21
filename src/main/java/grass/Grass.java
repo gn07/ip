@@ -20,7 +20,6 @@ public class Grass {
 
     public String getResponse(String input) {
         String output = "";
-//        ui.commandSeparator(input);
         if (input.equals("list")) {
             output += ui.printList();
         }
@@ -51,7 +50,6 @@ public class Grass {
         else {
             output += ui.invalidCommand();
         }
-//        output += ui.printLine();
         try {
             storage.writeToTxt(tasks.getTasks());
         } catch (GrassException e) {
