@@ -31,11 +31,15 @@ public class Storage {
 
         try {
             File f = new File(this.filePath);
+            assert f != null :"File could not open.";
             Scanner s = new Scanner(f);
 
             while (s.hasNextLine()) {
                 String line = s.nextLine();
                 String[] lineArray = line.split(" \\| ");
+
+                assert lineArray.length > 1 : "Invalid file format.";
+                assert lineArray[0].equals("T") || lineArray[0].equals("D") || lineArray[0].equals("E") : "Invalid task type.";
 
                 if (lineArray[0].equals("T")) {
                     inputList.add(new Todo(lineArray[2]));
@@ -71,6 +75,7 @@ public class Storage {
      */
     public void writeToTxt(ArrayList<Task> inputList) throws GrassException{
         try {
+            assert this,filePath.exists() : "File could not open.";
             File f = new File(this.filePath);
             FileWriter fw = new FileWriter(f);
             for (Task t : inputList) {
@@ -87,7 +92,7 @@ public class Storage {
             fw.close();
         }
         catch (IOException e) {
-            throw new GrassException("An error occurred.");
+            throw new GrassException("A storage error occurred.");
             // e.printStackTrace();
         }
         return;
